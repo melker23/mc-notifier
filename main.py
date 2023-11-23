@@ -2,20 +2,9 @@ import os
 import requests
 import json
 
+webhook_url = os.environ.get("DISCORD_WEBHOOK_URL")
 # Read Discord Webhook URL from file
 webhook_url_file = "discord_webhook_url.txt"
-
-# Check if the file exists
-if not os.path.exists(webhook_url_file):
-    raise FileNotFoundError(f"The file {webhook_url_file} does not exist.")
-
-# Read the webhook URL from the file
-with open(webhook_url_file, "r") as file:
-    webhook_url = file.read().strip()
-
-# Check if the webhook URL is empty
-if not webhook_url:
-    raise ValueError("Discord Webhook URL is empty in the file.")
 
 # Minecraft API URL
 minecraft_api = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
