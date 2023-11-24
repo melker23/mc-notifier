@@ -27,8 +27,8 @@ jobs:
       - name: Update stored_version.txt
         run: |
           git config --local user.email "actions@github.com"
-          git fetch origin main  # Fetch the latest changes from the main branch
-          git rebase origin/main  # Rebase the changes on top of the latest main branch
+          git fetch # Fetch the latest changes from the main branch
+          git rebase # Rebase the changes on top of the latest main branch
           echo "${{ steps.get_version.outputs.latest_version }}" > stored_version.txt
           git add stored_version.txt
           git commit -m "Update stored_version.txt to ${{ steps.get_version.outputs.latest_version }}"
