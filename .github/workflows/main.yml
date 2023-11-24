@@ -2,11 +2,10 @@ name: Python script tomfoolery
 
 on:
   schedule:
-    - cron:  '0 1 * * *'
-
+    - cron: '0 1 * * *'
 
 jobs:
-  your_job:
+  run_python_script:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +16,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt  # Replace with your requirements file if you have one
 
       - name: Run Python Script
         env:
