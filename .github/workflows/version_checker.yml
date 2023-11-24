@@ -30,4 +30,6 @@ jobs:
           git config --local user.email "actions@github.com"
           git fetch origin main  # Fetch the latest changes from the main branch
           git rebase origin/main  # Rebase the changes on top of the latest main branch
+          git pull
           git push origin main  # Push the updated changes to the main branch
+
