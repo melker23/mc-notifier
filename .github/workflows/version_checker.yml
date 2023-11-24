@@ -32,5 +32,11 @@ jobs:
           echo "${{ steps.get_version.outputs.latest_version }}" > stored_version.txt
           git add stored_version.txt
           git commit -m "Update stored_version.txt to ${{ steps.get_version.outputs.latest_version }}"
-          git pull origin main --no-edit  # Pull again to ensure all changes are incorporated
+          
+          # Fetch again to make sure there are no new changes
+          git fetch origin main
+          
+          # If any new changes, rebase and resolve conflicts if necessary
+          git rebase origin/main
+          
           git push origin main  # Push the updated changes to the main branch
