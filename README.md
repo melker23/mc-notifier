@@ -32,3 +32,11 @@ To receive notifications about the latest Minecraft version updates, you need to
 5. Customize the webhook name, avatar, and select the channel.
 6. Copy the webhook URL provided.
 
+## Configuring Discord Webhook in the Script
+
+Create a `.env` file in the project root and add the following line:
+
+```env
+DISCORD_WEBHOOK_URL=your_webhook_url_here
+
+
