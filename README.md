@@ -15,7 +15,7 @@ pip install -r requirements.txt
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/melker23/mc-notifier.git
    cd your-repository
    ```
 
@@ -38,5 +38,8 @@ Create a `.env` file in the project root and add the following line:
 
 ```env
 DISCORD_WEBHOOK_URL=your_webhook_url_here
+```
+Replace your_webhook_url_here with the copied webhook URL from the previous step. This environment variable is crucial for the script to send updates to the designated Discord channel.
+
 
 
