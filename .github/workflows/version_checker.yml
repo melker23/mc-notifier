@@ -1,4 +1,4 @@
-name: Update Minecraft Version
+name: update minecraft version 
 
 on:
   schedule:
@@ -17,6 +17,11 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Set up Git user
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+
       - name: Get Latest Minecraft Version
         id: get_version
         run: |
@@ -26,8 +31,6 @@ jobs:
 
       - name: Update stored_version.txt
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "Github Actions"
           git fetch # Fetch the latest changes from the main branch
           git rebase # Rebase the changes on top of the latest main branch
           echo "${{ steps.get_version.outputs.latest_version }}" > stored_version.txt
@@ -40,4 +43,4 @@ jobs:
           # If any new changes, rebase and resolve conflicts if necessary
           git rebase origin/main
           
-          git push origin main  # Push the updated changes to the main branch
+          git push origin main
