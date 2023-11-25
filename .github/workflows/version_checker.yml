@@ -19,8 +19,8 @@ jobs:
 
       - name: Set up Git user
         run: |
-          git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
 
       - name: Get Latest Minecraft Version
         id: get_version
