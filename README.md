@@ -9,7 +9,7 @@ This Python script checks for the latest Minecraft version and sends updates to 
 
 ```bash
 pip install -r requirements.txt
-
+```
 # Getting Started
 
 1. **Clone the repository:**
@@ -17,6 +17,7 @@ pip install -r requirements.txt
    ```bash
    git clone https://github.com/your-username/your-repository.git
    cd your-repository
+   ```
 
 # Setting Up Discord Webhook and Running the Script
 
