@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
    ```bash
    git clone https://github.com/melker23/mc-notifier.git
-   cd your-repository
+   cd mc-notifier
    ```
 
 # Setting Up Discord Webhook and Running the Script
