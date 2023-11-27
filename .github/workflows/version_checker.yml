@@ -33,13 +33,15 @@ jobs:
       - name: Update stored_version.txt
         run: |
           # Fetch the latest changes from the main branch
-          git fetch origin main || true
-          
+          git fetch origin main || :
+
           # Rebase the changes on top of the latest main branch
-          git rebase origin/main || true
-          
+          git rebase origin/main || :
+
           # Check if there are changes to commit
-          git diff --quiet || git commit -m "Update stored_version.txt to ${{ steps.get_version.outputs.latest_version }}"
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Update stored_version.txt to ${{ steps.get_version.outputs.latest_version }}"
+          fi
           
           # Fetch again to make sure there are no new changes
           git fetch origin main
