@@ -1,5 +1,6 @@
 # Minecraft Version Checker
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/melker23/mc-notifier/main.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/melker23/mc-notifier/badge)](https://www.codefactor.io/repository/github/melker23/mc-notifier)
 ![GitHub License](https://img.shields.io/github/license/melker23/mc-notifier)
 
 
