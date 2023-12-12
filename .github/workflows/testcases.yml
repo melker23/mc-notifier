@@ -19,7 +19,7 @@ jobs:
           echo "invalid_version" > stored_version.txt
 
           # Run your script
-          python your_script.py
+          python main.py
           # Check if the update occurred
           cat stored_version.txt
           # Add logic to check the content of stored_version.txt and determine success
@@ -45,7 +45,7 @@ jobs:
       - name: No Internet Connection
         run: |
           sudo service networking stop  # Simulate no internet
-          python your_script.py
+          python main.py
           exit_code=$?
           sudo service networking start  # Restore internet
           if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
@@ -56,7 +56,7 @@ jobs:
       - name: Unreadable stored_version File
         run: |
           chmod 000 stored_version.txt
-          python your_script.py
+          python main.py
           exit_code=$?
           chmod 644 stored_version.txt  # Restore file permissions
           if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
@@ -67,7 +67,7 @@ jobs:
       - name: Minecraft API Unavailable
         run: |
           export MINECRAFT_API="https://nonexistent-api.example.com"
-          python your_script.py
+          python main.py
           exit_code=$?
           if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
             echo "Minecraft API Unavailable test failed. Exiting with code $exit_code."
