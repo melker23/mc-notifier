@@ -1,4 +1,7 @@
 # Minecraft Version Checker
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/melker23/mc-notifier/main.yml)
+![GitHub License](https://img.shields.io/github/license/melker23/mc-notifier)
+
 
 This Python script checks for the latest Minecraft version and sends updates to a Discord webhook.
 
