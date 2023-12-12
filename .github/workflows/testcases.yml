@@ -1,0 +1,75 @@
+name: Test Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Incorrect stored_version
+        run: |
+          rm stored_version.txt
+          echo "invalid_version" > stored_version.txt
+
+          # Run your script
+          python your_script.py
+          # Check if the update occurred
+          cat stored_version.txt
+          # Add logic to check the content of stored_version.txt and determine success
+          exit_code=$?
+
+          # Check the exit code and fail the workflow if it's not in the range of 1-6
+          if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
+            echo "Incorrect stored_version test failed. Exiting with code $exit_code."
+            exit 1
+          fi
+
+      - name: Generate Gibberish and Write to File
+        run: |
+          gibberish=$(python -c "print(''.join(chr(i) for i in range(0x2500, 0x2600)))")  # Change the range as needed
+          echo "$gibberish" > gibberish.txt
+
+          # Check the exit code of the previous step and fail the workflow if it's not in the range of 1-6
+          if [ $? -lt 1 ] || [ $? -gt 6 ]; then
+            echo "Generate Gibberish test failed. Exiting with code $?."
+            exit 1
+          fi
+
+      - name: No Internet Connection
+        run: |
+          sudo service networking stop  # Simulate no internet
+          python your_script.py
+          exit_code=$?
+          sudo service networking start  # Restore internet
+          if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
+            echo "No Internet Connection test failed. Exiting with code $exit_code."
+            exit 1
+          fi
+
+      - name: Unreadable stored_version File
+        run: |
+          chmod 000 stored_version.txt
+          python your_script.py
+          exit_code=$?
+          chmod 644 stored_version.txt  # Restore file permissions
+          if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
+            echo "Unreadable stored_version File test failed. Exiting with code $exit_code."
+            exit 1
+          fi
+
+      - name: Minecraft API Unavailable
+        run: |
+          export MINECRAFT_API="https://nonexistent-api.example.com"
+          python your_script.py
+          exit_code=$?
+          if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
+            echo "Minecraft API Unavailable test failed. Exiting with code $exit_code."
+            exit 1
+          fi
