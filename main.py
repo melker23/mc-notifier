@@ -59,3 +59,18 @@ except json.JSONDecodeError as e:
     # Handle invalid JSON in the response
     print(f"Error decoding JSON: {e}")
     exit(3)  # Exit with code 3 for JSON decoding errors
+
+except (FileNotFoundError, PermissionError) as e:
+    # Handle situations where the script doesn't have permission to read or write files
+    print(f"File error: {e}")
+    exit(4)  # Exit with code 4 for file-related errors
+
+except (TypeError, ValueError) as e:
+    # Handle situations where the webhook URL is empty or malformed
+    print(f"Webhook URL error: {e}")
+    exit(5)  # Exit with code 5 for webhook URL-related errors
+
+except KeyError as e:
+    # Handle situations where the structure of the API response is not as expected
+    print(f"KeyError in API response: {e}")
+    exit(6)  # Exit with code 6 for unexpected API response structure
