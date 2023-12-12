@@ -29,6 +29,8 @@ jobs:
           if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
             echo "Incorrect stored_version test failed. Exiting with code $exit_code."
             exit 1
+          else
+            exit 0
           fi
 
       - name: Generate Gibberish and Write to File
@@ -40,6 +42,8 @@ jobs:
           if [ $? -lt 1 ] || [ $? -gt 6 ]; then
             echo "Generate Gibberish test failed. Exiting with code $?."
             exit 1
+          else
+            exit 0
           fi
 
       - name: No Internet Connection
@@ -51,6 +55,8 @@ jobs:
           if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
             echo "No Internet Connection test failed. Exiting with code $exit_code."
             exit 1
+          else
+            exit 0
           fi
 
       - name: Unreadable stored_version File
@@ -62,6 +68,8 @@ jobs:
           if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
             echo "Unreadable stored_version File test failed. Exiting with code $exit_code."
             exit 1
+          else
+            exit 0
           fi
 
       - name: Minecraft API Unavailable
@@ -72,4 +80,6 @@ jobs:
           if [ $exit_code -lt 1 ] || [ $exit_code -gt 6 ]; then
             echo "Minecraft API Unavailable test failed. Exiting with code $exit_code."
             exit 1
+          else
+            exit 0
           fi
