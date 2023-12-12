@@ -23,7 +23,7 @@ pip install -r requirements.txt
    cd mc-notifier
    ```
 
-# Setting Up Discord Webhook and Running the Script
+## Setting Up Discord Webhook and Running the Script
 
 To receive notifications about the latest Minecraft version updates, you need to set up a Discord webhook and run the script. Follow the steps below:
 
